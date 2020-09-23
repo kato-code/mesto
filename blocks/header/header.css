@@ -1,0 +1,10 @@
+.header {
+    /* display: flex; */
+    position: relative;
+    max-width: 882px;
+    min-height: 74px;
+
+    margin: 0 199px;
+
+    border: 1px solid red;
+}
