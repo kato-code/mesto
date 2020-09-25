@@ -1,12 +1,22 @@
 .header__logo {
-    position: absolute;
+    /* position: absolute;
     top: 0;
-    left: 0;
+    left: 0; */
 
     width: 142px;
-    min-height: 33px;
+    height: 33px;
 
     background-image: url(../../../images/logo.png);
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
 }
+
+@media screen and (max-width: 320px) {
+    .header__logo{
+        width: 104px;
+        height: 24px;
+
+        /* left: 27px; */
+    }
+}
+    

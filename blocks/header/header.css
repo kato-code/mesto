@@ -1,10 +1,22 @@
 .header {
-    /* display: flex; */
-    position: relative;
+    /* position: relative; */
+    
     max-width: 882px;
-    min-height: 74px;
+    /* min-height: 74px; */
 
     margin: 0 199px;
+    padding-bottom: 41px;
 
     border: 1px solid red;
+}
+
+@media screen and (max-width: 320px) {
+    .header {
+        max-width: 100%;
+        /* min-height: 56px; */
+
+        margin: 0;
+        padding-left: 27px;
+        padding-bottom: 32px;
+    }
 }
