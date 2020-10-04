@@ -1,22 +1,12 @@
-.cards__like {
+.button_type_like-cards {
     width: 21px;
     height: 18px;
 
     margin-left: auto;
-    padding: 0;
 
     background: rgba(255, 255, 255, 0) url(../../../images/like-icon.svg) no-repeat;
     background-position: bottom;
     background-size: contain;
 
     border: none;
-    outline-style: none;
-    box-sizing: border-box;
-}
-
-.cards__like:hover {
-    opacity: 0.6;
-    transition: opacity 0.3s linear;
-
-    cursor: url(../../../images/cursor-icon.png), pointer;
 }
