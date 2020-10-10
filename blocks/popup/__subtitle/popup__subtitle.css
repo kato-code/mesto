@@ -1,4 +1,4 @@
-.popup__profession {
+.popup__subtitle {
     margin-bottom: 30px;
     padding: 0 0 12px 0;
 
@@ -15,6 +15,6 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.popup__profession:last-of-type {
+.popup__subtitle:last-of-type {
     margin-bottom: 0;
 }
