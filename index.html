@@ -24,12 +24,12 @@
                 </div>
                 <button type="button" class="button button_type_edit-profile"></button>
             </div>
-            <button type="button" class="button button_type_add-profile"></button>
+            <button type="button" class="button button_type_add-gallery"></button>
         </section>
 
         <section class="gallery">
             <ul class="cards">
-                <li class="cards__item">
+                <!-- <li class="cards__item">
                     <img class="cards__image" src="./images/dombay.jpg" alt="Домбай">
                     <div class="cards__description"> 
                         <h2 class="cards__title">Домбай</h2>
@@ -70,7 +70,7 @@
                         <h2 class="cards__title">Архыз</h2>
                         <button type="button" class="button button_type_like-cards"></button>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </section>
     </main>
@@ -79,17 +79,38 @@
         <p class="footer__content">© 2020 Mesto Russia</p>
     </footer>
     
-    <section class="popup">
-        <form class="popup__container" name="form-popup">
-            <button type="button" class="button button_type_close-popup"></button>
+    <section class="popup" id="popup-profile">
+        <form name="form-profile" id="form-profile" class="popup__container">
+            <button type="button" id="close-profile" class="button button_type_close-popup"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <input type="text" name="name" id="name" class="popup__profession">
-            <input type="text" name="profession" id="profession" class="popup__profession">
-            <button type="submit" class="button button_type_save-popup" value="Сохранить">Сохранить</button>
+            <input type="text" name="name" id="name" class="popup__subtitle">
+            <input type="text" name="profession" id="profession" class="popup__subtitle">
+            <button type="submit" id="save-profile" value="Сохранить" class="button button_type_save-popup">Сохранить</button>
         </form>
     </section>
 
+    <section class="popup" id="popup-gallery">
+        <form name="form-gallery" id="form-gallery" class="popup__container">
+            <button type="button" id="close-gallery" class="button button_type_close-popup"></button>
+            <h2 class="popup__title">Новое место</h2>
+            <input type="text" name="name-card" id="name-card" placeholder="Название" class="popup__subtitle">
+            <input type="text" name="link-card" id="link-сard" placeholder="Ссылка на картинку" class="popup__subtitle">
+            <button type="submit" id="save-gallery" value="Создать" class="button button_type_save-popup">Создать</button>
+        </form>
+    </section>
+
+    <template id="card-template">
+        <li class="cards__item">
+            <img class="cards__image" src="" alt="Фото">
+            <div class="cards__description">
+                <h2 class="cards__title"></h2>
+                <button type="button" class="button button_type_like-cards"></button>
+            </div>
+        </li>
+    </template>
+
     <script src="./scripts/index.js"></script>
+
 </div>
 </body>
 </html>
