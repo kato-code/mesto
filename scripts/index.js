@@ -92,10 +92,10 @@ function getItems (data) {
     card.querySelector(".cards__image").src = data.link;
     
     const likeСardButton = card.querySelector(".button_type_like-cards");
-
-    likeСardButton.addEventListener('click', function (evt) {
-        
-    })
+    
+    likeСardButton.addEventListener("click", function (evt) {
+        evt.target.classList.toggle("button_type_like-cards-active");
+    });
 
     return card;
 };
