@@ -46,7 +46,6 @@ function popupGalleryToggle () {
 openPopupGalleryButton.addEventListener("click", popupGalleryToggle);
 closePopupGalleryButton.addEventListener("click", popupGalleryToggle);
 
-
 const initialCards = [
     {
         name: "Домбай",
@@ -57,8 +56,8 @@ const initialCards = [
         link: "https://images.unsplash.com/photo-1601845715177-5d14775529c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1601&q=80"
     },
     {
-        name: "Карачаево-Черкесская Республика",
-        link: "https://images.unsplash.com/photo-1575631687630-f58400f0964f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=708&q=80"
+        name: "Карачаевск",
+        link: "https://images.unsplash.com/photo-1538819285938-6a9b4eda500b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1601&q=80"
     },
     {
         name: "Кичи-Балык",

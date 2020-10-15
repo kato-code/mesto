@@ -28,50 +28,7 @@
         </section>
 
         <section class="gallery">
-            <ul class="cards">
-                <!-- <li class="cards__item">
-                    <img class="cards__image" src="./images/dombay.jpg" alt="Домбай">
-                    <div class="cards__description"> 
-                        <h2 class="cards__title">Домбай</h2>
-                        <button type="button" class="button button_type_like-cards"></button>
-                    </div>
-                </li>
-                <li class="cards__item">
-                    <img class="cards__image" src="./images/elbrus.jpg" alt="Эльбрус">
-                    <div class="cards__description">
-                        <h2 class="cards__title">Эльбрус</h2>
-                        <button type="button" class="button button_type_like-cards"></button>
-                    </div>
-                </li>
-                <li class="cards__item">
-                    <img class="cards__image" src="./images/karachayevsk.jpg" alt="Карачаевск">
-                    <div class="cards__description">
-                        <h2 class="cards__title">Карачаевск</h2>
-                        <button type="button" class="button button_type_like-cards"></button>
-                    </div>
-                </li>
-                <li class="cards__item">
-                    <img class="cards__image" src="./images/kichi-balyk.jpg" alt="Кичи-Балык">
-                    <div class="cards__description">
-                        <h2 class="cards__title">Кичи-Балык</h2>
-                        <button type="button" class="button button_type_like-cards"></button>
-                    </div>
-                </li>
-                <li class="cards__item">
-                    <img class="cards__image" src="./images/lakes.jpg" alt="Бадукские озёра">
-                    <div class="cards__description">
-                        <h2 class="cards__title">Бадукские озёра</h2>
-                        <button type="button" class="button button_type_like-cards"></button>
-                    </div>
-                </li>
-                <li class="cards__item">
-                    <img class="cards__image" src="./images/arkhyz.jpg" alt="Архыз">
-                    <div class="cards__description">
-                        <h2 class="cards__title">Архыз</h2>
-                        <button type="button" class="button button_type_like-cards"></button>
-                    </div>
-                </li> -->
-            </ul>
+            <ul class="cards"></ul>
         </section>
     </main>
 
@@ -90,12 +47,12 @@
     </section>
 
     <section class="popup" id="popup-gallery">
-        <form name="form-gallery" id="form-gallery" class="popup__container">
-            <button type="button" id="close-gallery" class="button button_type_close-popup"></button>
-            <h2 class="popup__title">Новое место</h2>
-            <input type="text" name="name-card" id="name-card" placeholder="Название" class="popup__subtitle">
-            <input type="text" name="link-card" id="link-сard" placeholder="Ссылка на картинку" class="popup__subtitle">
-            <button type="submit" id="save-gallery" value="Создать" class="button button_type_save-popup">Создать</button>
+        <form name="form-gallery" id="form-gallery" class="popup__container popup__container_theme_gallery">
+            <button type="button" id="close-gallery" class="button button_type_close-popup button_type_close-popup-gallery"></button>
+            <h2 class="popup__title popup__title_theme_gallery">Новое место</h2>
+            <input type="text" name="name-card" id="name-card" placeholder="Название" class="popup__subtitle popup__subtitle_theme_gallery">
+            <input type="text" name="link-card" id="link-сard" placeholder="Ссылка на картинку" class="popup__subtitle popup__subtitle_theme_gallery" required>
+            <button type="submit" id="save-gallery" value="Создать" class="button button_type_save-popup button_type_save-popup-gallery">Создать</button>
         </form>
     </section>
 
