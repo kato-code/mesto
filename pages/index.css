@@ -12,6 +12,7 @@
 @import url("../blocks/button/_type/button_type_save-popup.css");
 @import url("../blocks/button/_type/button_type_like-cards.css");
 @import url("../blocks/button/_type/button_type_like-cards-active.css");
+@import url("../blocks/button/_type/button_type_trash-cards.css");
 
 @import url("../blocks/header/header.css");
 @import url("../blocks/header/__logo/header__logo.css");

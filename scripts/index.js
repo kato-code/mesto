@@ -80,11 +80,13 @@ const linkCardInput = document.querySelector("#link-сard");
 const addCardGalleryButton = document.querySelector("#save-gallery");
 const cardTemplate = document.querySelector("#card-template");
 
+
 function renderCards () {
     const items = initialCards.map(element => getItems(element));
 
     cardsGallery.append(...items);
 };
+
 
 function getItems (data) {
     const card = cardTemplate.content.cloneNode(true);
@@ -92,14 +94,19 @@ function getItems (data) {
     card.querySelector(".cards__image").src = data.link;
     
     const likeСardButton = card.querySelector(".button_type_like-cards");
-    
     likeСardButton.addEventListener("click", function (evt) {
         evt.target.classList.toggle("button_type_like-cards-active");
+    });
+
+    const trashCardButton = card.querySelector(".button_type_trash-cards");
+    trashCardButton.addEventListener("click", function (evt) {
+        evt.target.closest(".cards__item").remove();
     });
 
     return card;
 };
 renderCards();
+
 
 function formGallerySubmitHandler (evt) {
     evt.preventDefault(); 
@@ -113,21 +120,3 @@ function formGallerySubmitHandler (evt) {
     popupGalleryToggle();
 }
 formGallery.addEventListener("submit", formGallerySubmitHandler);
-
-// const addCardHandler = () => {
-//     addCardGalleryButton.addEventListener("click", (evt) => {
-//     evt.preventDefault();
-//         const item = getItems({
-//             name: nameCardInput.value,
-//             link: linkCardInput.value
-//         });
-        
-//         cardsGallery.prepend(item);
-
-//         nameCardInput.value = "";
-//         linkCardInput.value = "";
-
-//         // popupGalleryToggle();
-//     })
-// };
-// addCardHandler();
