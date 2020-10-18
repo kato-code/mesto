@@ -1,12 +1,40 @@
+const popup = document.querySelector(".popup");
+
+const popupProfile = document.querySelector(".popup_type_profile");
 const openPopupProfileButton = document.querySelector(".button_type_edit-profile");
 const closePopupProfileButton = document.querySelector("#close-profile");
-const popupProfile = document.querySelector("#popup-profile");
+const formProfile = document.querySelector("#form-profile");
 const nameProfile = document.querySelector(".profile__name");
 const professionProfile = document.querySelector(".profile__profession");
 const nameProfileInput = document.querySelector("#name");
 const professionProfileInput = document.querySelector("#profession");
-const formProfile = document.querySelector("#form-profile");
 
+const popupGallery = document.querySelector(".popup_type_gallery");
+const openPopupGalleryButton = document.querySelector(".button_type_add-gallery");
+const closePopupGalleryButton = document.querySelector("#close-gallery");
+const formGallery = document.querySelector("#form-gallery");
+const cardsGallery = document.querySelector(".cards")
+const cardTemplate = document.querySelector("#card-template");
+const nameCardInput = document.querySelector("#name-card");
+const linkCardInput = document.querySelector("#link-сard");
+const addCardGalleryButton = document.querySelector("#save-gallery");
+
+const popupCard = document.querySelector(".popup_type_card");
+const imagePopupCard = document.querySelector(".popup__image-card");
+const closePopupCard = document.querySelector("#close-card");
+const titlePopupCard = document.querySelector(".popup__title_type_card");
+
+
+
+// function popupToggle (popup) {
+//     popup.classList.toggle("popup_is-opened");
+// }
+// openPopupProfileButton.addEventListener("click", () => popupToggle(popupProfile));
+// closePopupProfileButton.addEventListener("click", () => popupToggle(popupProfile));
+// openPopupGalleryButton.addEventListener("click", () => popupToggle(popupGallery));
+// closePopupGalleryButton.addEventListener("click", () => popupToggle(popupGallery));
+// openPopupCard.addEventListener("click", () => popupToggle(popupCard));
+// closePopupCard.addEventListener("click", () => popupToggle(popupGallery));
 
 function popupProfileToggle () {
     if (popupProfile.classList.contains("popup_is-opened") === false) {
@@ -16,35 +44,28 @@ function popupProfileToggle () {
     popupProfile.classList.toggle("popup_is-opened");
 }
 
-function formProfileSubmitHandler (evt) {
+formProfile.addEventListener("submit", function (evt) {
     evt.preventDefault(); 
     nameProfile.textContent = nameProfileInput.value;
     professionProfile.textContent = professionProfileInput.value;
 
     popupProfileToggle();
-}
-
+    // popupToggle();
+});
 openPopupProfileButton.addEventListener("click", popupProfileToggle);
 closePopupProfileButton.addEventListener("click", popupProfileToggle);
-formProfile.addEventListener("submit", formProfileSubmitHandler);
 
-
-const openPopupGalleryButton = document.querySelector(".button_type_add-gallery");
-const closePopupGalleryButton = document.querySelector("#close-gallery");
-const popupGallery = document.querySelector("#popup-gallery");
-const formGallery = document.querySelector("#form-gallery");
 
 function popupGalleryToggle () {
     if (popupGallery.classList.contains("popup_is-opened") === false) {
         nameCardInput.value = "";
         linkCardInput.value = "";
     }
-    
     popupGallery.classList.toggle("popup_is-opened");
 }
-
 openPopupGalleryButton.addEventListener("click", popupGalleryToggle);
 closePopupGalleryButton.addEventListener("click", popupGalleryToggle);
+
 
 const initialCards = [
     {
@@ -73,11 +94,16 @@ const initialCards = [
     }
 ];
 
-const cardsGallery = document.querySelector(".cards")
-const nameCardInput = document.querySelector("#name-card");
-const linkCardInput = document.querySelector("#link-сard");
-const addCardGalleryButton = document.querySelector("#save-gallery");
-const cardTemplate = document.querySelector("#card-template");
+// function popupCardToggle () {
+//     if (popupCard.classList.contains("popup_is-opened") === false) {
+//         imagePopupCard.src = imageCards.src;
+//         titlePopupCard.innerText = titleCards.innerText;  
+//     }
+//     popupCard.classList.toggle("popup_is-opened");     
+// };
+    
+// imagePopupCard.addEventListener("click", popupCardToggle);
+// closePopupCard.addEventListener("click", popupCardToggle);
 
 
 function renderCards () {
@@ -86,11 +112,15 @@ function renderCards () {
     cardsGallery.append(...items);
 };
 
-
 function getItems (data) {
     const card = cardTemplate.content.cloneNode(true);
-    card.querySelector(".cards__title").innerText = data.name;
-    card.querySelector(".cards__image").src = data.link;
+    const titleCards = card.querySelector(".cards__title");
+    const imageCards = card.querySelector(".cards__image");
+    
+    titleCards.innerText = data.name;
+    imageCards.src = data.link;
+    // card.querySelector(".cards__title").innerText = data.name;
+    // card.querySelector(".cards__image").src = data.link;
     
     const likeСardButton = card.querySelector(".button_type_like-cards");
     likeСardButton.addEventListener("click", function (evt) {
@@ -102,12 +132,22 @@ function getItems (data) {
         evt.target.closest(".cards__item").remove();
     });
 
+    imageCards.addEventListener("click", function () {
+        imagePopupCard.src = imageCards.src;
+        titlePopupCard.innerText = titleCards.innerText;
+ 
+        popupCard.classList.add("popup_is-opened");
+    });
+
+    closePopupCard.addEventListener("click", function () {
+        popupCard.classList.remove("popup_is-opened");
+    });
+
     return card;
 };
 renderCards();
 
-
-function formGallerySubmitHandler (evt) {
+formGallery.addEventListener("submit", function (evt) {
     evt.preventDefault(); 
     const item = getItems({
         name: nameCardInput.value,
@@ -117,5 +157,25 @@ function formGallerySubmitHandler (evt) {
     cardsGallery.prepend(item);
 
     popupGalleryToggle();
-}
-formGallery.addEventListener("submit", formGallerySubmitHandler);
+    // popupToggle()
+});
+
+
+//     function openImgPopup() {
+//         imgPopup.classList.add("imgPopup_opened");
+//         imgPopupImage.src = elementImage.src;
+//         imgPopupTitle.textContent = elementTitle.textContent;
+//     }
+//     elementImage.addEventListener("click", function() {
+//         evt.target.openImgPopup()});
+
+
+        // elementImage.addEventListener("click", openImgPopup);
+// }
+// Когда ты пишешь слушатель так:
+// button.addEventListener("click", openPopup(profilePopup))
+// Она из-за такой записи function() вызывается сразу.
+// Поэтому, чтобы избежать мгновенного вызова, надо писать коллбэк так:
+// button.addEventListener("click", () => openPopup(profilePopup))
+
+// Такая запись вызовет нужную тебе функцию именно в момент события.
