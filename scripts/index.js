@@ -25,48 +25,6 @@ const closePopupCard = document.querySelector("#close-card");
 const titlePopupCard = document.querySelector(".popup__title_type_card");
 
 
-
-// function popupToggle (popup) {
-//     popup.classList.toggle("popup_is-opened");
-// }
-// openPopupProfileButton.addEventListener("click", () => popupToggle(popupProfile));
-// closePopupProfileButton.addEventListener("click", () => popupToggle(popupProfile));
-// openPopupGalleryButton.addEventListener("click", () => popupToggle(popupGallery));
-// closePopupGalleryButton.addEventListener("click", () => popupToggle(popupGallery));
-// openPopupCard.addEventListener("click", () => popupToggle(popupCard));
-// closePopupCard.addEventListener("click", () => popupToggle(popupGallery));
-
-function popupProfileToggle () {
-    if (popupProfile.classList.contains("popup_is-opened") === false) {
-    nameProfileInput.value = nameProfile.textContent;
-    professionProfileInput.value = professionProfile.textContent;
-    }
-    popupProfile.classList.toggle("popup_is-opened");
-}
-
-formProfile.addEventListener("submit", function (evt) {
-    evt.preventDefault(); 
-    nameProfile.textContent = nameProfileInput.value;
-    professionProfile.textContent = professionProfileInput.value;
-
-    popupProfileToggle();
-    // popupToggle();
-});
-openPopupProfileButton.addEventListener("click", popupProfileToggle);
-closePopupProfileButton.addEventListener("click", popupProfileToggle);
-
-
-function popupGalleryToggle () {
-    if (popupGallery.classList.contains("popup_is-opened") === false) {
-        nameCardInput.value = "";
-        linkCardInput.value = "";
-    }
-    popupGallery.classList.toggle("popup_is-opened");
-}
-openPopupGalleryButton.addEventListener("click", popupGalleryToggle);
-closePopupGalleryButton.addEventListener("click", popupGalleryToggle);
-
-
 const initialCards = [
     {
         name: "Домбай",
@@ -94,23 +52,48 @@ const initialCards = [
     }
 ];
 
-// function popupCardToggle () {
-//     if (popupCard.classList.contains("popup_is-opened") === false) {
-//         imagePopupCard.src = imageCards.src;
-//         titlePopupCard.innerText = titleCards.innerText;  
-//     }
-//     popupCard.classList.toggle("popup_is-opened");     
-// };
-    
-// imagePopupCard.addEventListener("click", popupCardToggle);
-// closePopupCard.addEventListener("click", popupCardToggle);
-
 
 function renderCards () {
     const items = initialCards.map(element => getItems(element));
 
     cardsGallery.append(...items);
 };
+
+function togglePopup (popup) {
+    popup.classList.toggle("popup_is-opened");
+}
+
+function openPopupProfile () {
+    if (popupProfile.classList.contains("popup_is-opened") === false) {
+        nameProfileInput.value = nameProfile.textContent;
+        professionProfileInput.value = professionProfile.textContent;
+    };
+        
+    togglePopup(popupProfile);
+};
+
+function sendFormProfile (evt) {
+    evt.preventDefault(); 
+    nameProfile.textContent = nameProfileInput.value;
+    professionProfile.textContent = professionProfileInput.value;
+
+    togglePopup(popupProfile);
+}
+
+function sendFormGallery (evt) {
+    evt.preventDefault(); 
+    const item = getItems({
+        name: nameCardInput.value,
+        link: linkCardInput.value
+    });
+
+    cardsGallery.prepend(item);
+
+    nameCardInput.value = "";
+    linkCardInput.value = "";
+
+    togglePopup(popupGallery);
+}
 
 function getItems (data) {
     const card = cardTemplate.content.cloneNode(true);
@@ -119,8 +102,6 @@ function getItems (data) {
     
     titleCards.innerText = data.name;
     imageCards.src = data.link;
-    // card.querySelector(".cards__title").innerText = data.name;
-    // card.querySelector(".cards__image").src = data.link;
     
     const likeСardButton = card.querySelector(".button_type_like-cards");
     likeСardButton.addEventListener("click", function (evt) {
@@ -136,46 +117,20 @@ function getItems (data) {
         imagePopupCard.src = imageCards.src;
         titlePopupCard.innerText = titleCards.innerText;
  
-        popupCard.classList.add("popup_is-opened");
+        togglePopup(popupCard)
     });
-
-    closePopupCard.addEventListener("click", function () {
-        popupCard.classList.remove("popup_is-opened");
-    });
-
+   
     return card;
 };
+
 renderCards();
 
-formGallery.addEventListener("submit", function (evt) {
-    evt.preventDefault(); 
-    const item = getItems({
-        name: nameCardInput.value,
-        link: linkCardInput.value
-    });
-    
-    cardsGallery.prepend(item);
+openPopupProfileButton.addEventListener("click", openPopupProfile);
+closePopupProfileButton.addEventListener("click", () => togglePopup(popupProfile));
+formProfile.addEventListener("submit", sendFormProfile);
 
-    popupGalleryToggle();
-    // popupToggle()
-});
+openPopupGalleryButton.addEventListener("click", () => togglePopup(popupGallery));
+closePopupGalleryButton.addEventListener("click", () => togglePopup(popupGallery));
+formGallery.addEventListener("submit", sendFormGallery);
 
-
-//     function openImgPopup() {
-//         imgPopup.classList.add("imgPopup_opened");
-//         imgPopupImage.src = elementImage.src;
-//         imgPopupTitle.textContent = elementTitle.textContent;
-//     }
-//     elementImage.addEventListener("click", function() {
-//         evt.target.openImgPopup()});
-
-
-        // elementImage.addEventListener("click", openImgPopup);
-// }
-// Когда ты пишешь слушатель так:
-// button.addEventListener("click", openPopup(profilePopup))
-// Она из-за такой записи function() вызывается сразу.
-// Поэтому, чтобы избежать мгновенного вызова, надо писать коллбэк так:
-// button.addEventListener("click", () => openPopup(profilePopup))
-
-// Такая запись вызовет нужную тебе функцию именно в момент события.
+closePopupCard.addEventListener("click", () => togglePopup(popupCard));
