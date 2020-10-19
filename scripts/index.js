@@ -54,7 +54,7 @@ const initialCards = [
 
 
 function renderCards () {
-    const items = initialCards.map(element => getItems(element));
+    const items = initialCards.map(element => getItem(element));
 
     cardsGallery.append(...items);
 };
@@ -82,7 +82,7 @@ function sendFormProfile (evt) {
 
 function sendFormGallery (evt) {
     evt.preventDefault(); 
-    const item = getItems({
+    const item = getItem({
         name: nameCardInput.value,
         link: linkCardInput.value
     });
@@ -95,13 +95,14 @@ function sendFormGallery (evt) {
     togglePopup(popupGallery);
 }
 
-function getItems (data) {
+function getItem (data) {
     const card = cardTemplate.content.cloneNode(true);
-    const titleCards = card.querySelector(".cards__title");
-    const imageCards = card.querySelector(".cards__image");
+    const cardTitle = card.querySelector(".cards__title");
+    const cardImage = card.querySelector(".cards__image");
     
-    titleCards.innerText = data.name;
-    imageCards.src = data.link;
+    cardTitle.innerText = data.name;
+    cardImage.src = data.link;
+    cardImage.alt = "Место";
     
     const likeСardButton = card.querySelector(".button_type_like-cards");
     likeСardButton.addEventListener("click", function (evt) {
@@ -113,9 +114,9 @@ function getItems (data) {
         evt.target.closest(".cards__item").remove();
     });
 
-    imageCards.addEventListener("click", function () {
-        imagePopupCard.src = imageCards.src;
-        titlePopupCard.innerText = titleCards.innerText;
+    cardImage.addEventListener("click", function () {
+        imagePopupCard.src = cardImage.src;
+        titlePopupCard.innerText = cardTitle.innerText;
  
         togglePopup(popupCard)
     });
