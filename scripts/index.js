@@ -102,7 +102,7 @@ function getItem (data) {
     
     cardTitle.innerText = data.name;
     cardImage.src = data.link;
-    cardImage.alt = "Место";
+    cardImage.alt = "Место: " + data.name;
     
     const likeСardButton = card.querySelector(".button_type_like-cards");
     likeСardButton.addEventListener("click", function (evt) {
