@@ -97,21 +97,21 @@ function sendFormGallery (evt) {
 
 function getItem (data) {
     const card = cardTemplate.content.cloneNode(true);
-    const cardTitle = card.querySelector(".cards__title");
-    const cardImage = card.querySelector(".cards__image");
+    const cardTitle = card.querySelector(".card__title");
+    const cardImage = card.querySelector(".card__image");
     
     cardTitle.innerText = data.name;
     cardImage.src = data.link;
     cardImage.alt = "Место: " + data.name;
     
-    const likeСardButton = card.querySelector(".button_type_like-cards");
+    const likeСardButton = card.querySelector(".button_type_like-card");
     likeСardButton.addEventListener("click", function (evt) {
-        evt.target.classList.toggle("button_type_like-cards-active");
+        evt.target.classList.toggle("button_type_like-card-active");
     });
 
-    const trashCardButton = card.querySelector(".button_type_trash-cards");
+    const trashCardButton = card.querySelector(".button_type_trash-card");
     trashCardButton.addEventListener("click", function (evt) {
-        evt.target.closest(".cards__item").remove();
+        evt.target.closest(".card__item").remove();
     });
 
     cardImage.addEventListener("click", function () {
