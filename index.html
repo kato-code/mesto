@@ -40,8 +40,8 @@
         <form name="form-profile" id="form-profile" class="popup__container popup__container_type_profile">
             <button type="button" id="close-profile" class="button button_type_close-popup"></button>
             <h2 class="popup__title popup__title_type_profile">Редактировать профиль</h2>
-            <input type="text" name="name" id="name" class="popup__subtitle popup__subtitle_type_profile">
-            <input type="text" name="profession" id="profession" class="popup__subtitle popup__subtitle_type_profile">
+            <input type="text" name="name" id="name" class="popup__subtitle popup__subtitle_type_profile" minlength="2" maxlength="40" required>
+            <input type="text" name="profession" id="profession" class="popup__subtitle popup__subtitle_type_profile" minlength="2" maxlength="200" required>
             <button type="submit" id="save-profile" value="Сохранить" class="button button_type_save-popup">Сохранить</button>
         </form>
     </section>
@@ -50,8 +50,8 @@
         <form name="form-gallery" id="form-gallery" class="popup__container popup__container_type_gallery">
             <button type="button" id="close-gallery" class="button button_type_close-popup button_type_close-popup-gallery"></button>
             <h2 class="popup__title popup__title_type_gallery">Новое место</h2>
-            <input type="text" name="name-card" id="name-card" placeholder="Название" class="popup__subtitle popup__subtitle_type_gallery">
-            <input type="text" name="link-card" id="link-сard" placeholder="Ссылка на картинку" class="popup__subtitle popup__subtitle_type_gallery" required>
+            <input type="text" name="name-card" id="name-card" placeholder="Название" class="popup__subtitle popup__subtitle_type_gallery" minlength="2" maxlength="30" required>
+            <input type="url" name="link-card" id="link-сard" placeholder="Ссылка на картинку" class="popup__subtitle popup__subtitle_type_gallery" required>
             <button type="submit" id="save-gallery" value="Создать" class="button button_type_save-popup button_type_save-popup-gallery">Создать</button>
         </form>
     </section>
