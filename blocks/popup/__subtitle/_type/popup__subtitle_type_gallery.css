@@ -1,7 +1,5 @@
 @media screen and (max-width: 768px) and (min-width: 320px) {
     .popup__subtitle_type_gallery {
-        margin-bottom: 20px;
-
         font-size: 12px;
         line-height: 14px;
     }
