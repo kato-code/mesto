@@ -16,6 +16,7 @@
 @import url("../blocks/button/_type/button_type_like-card.css");
 @import url("../blocks/button/_type/button_type_like-card-active.css");
 @import url("../blocks/button/_type/button_type_trash-card.css");
+@import url("../blocks/button/_type/button_type_invalid.css");
 
 @import url("../blocks/header/header.css");
 @import url("../blocks/header/__logo/header__logo.css");
