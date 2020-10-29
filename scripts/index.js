@@ -1,4 +1,6 @@
 const popup = document.querySelector(".popup");
+// const popup = Array.from(document.querySelectorAll(".popup"));
+// console.log(popup)
 
 const popupProfile = document.querySelector(".popup_type_profile");
 const openPopupProfileButton = document.querySelector(".button_type_edit-profile");
@@ -61,7 +63,27 @@ function renderCards () {
 
 function togglePopup (popup) {
     popup.classList.toggle("popup_is-opened");
-}
+
+    document.addEventListener("keydown", function (evt) {
+        closePopupOnClickEsc(evt, popup)
+    });
+
+    document.addEventListener("click", function (evt) {
+        closePopupOnСlickOverlay(evt, popup)
+    });
+};
+
+function closePopupOnСlickOverlay (evt, popup) {
+    if (evt.target === popup) {
+        togglePopup(popup)
+    }
+};
+
+function closePopupOnClickEsc (evt, popup) {
+    if (evt.key === "Escape") {
+        togglePopup(popup)
+    }
+};
 
 function openPopupProfile () {
     if (popupProfile.classList.contains("popup_is-opened") === false) {
