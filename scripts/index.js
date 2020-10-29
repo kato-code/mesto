@@ -1,6 +1,4 @@
 const popup = document.querySelector(".popup");
-// const popup = Array.from(document.querySelectorAll(".popup"));
-// console.log(popup)
 
 const popupProfile = document.querySelector(".popup_type_profile");
 const openPopupProfileButton = document.querySelector(".button_type_edit-profile");
@@ -18,7 +16,7 @@ const formGallery = document.querySelector("#form-gallery");
 const cardsGallery = document.querySelector(".cards")
 const cardTemplate = document.querySelector("#card-template");
 const nameCardInput = document.querySelector("#name-card");
-const linkCardInput = document.querySelector("#link-сard");
+const linkCardInput = document.querySelector("#link-card");
 const addCardGalleryButton = document.querySelector("#save-gallery");
 
 const popupCard = document.querySelector(".popup_type_card");
