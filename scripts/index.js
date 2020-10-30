@@ -74,14 +74,12 @@ function togglePopup (popup) {
 function closePopupOnСlickOverlay (evt, popup) {
     if (evt.target === evt.currentTarget && popup.classList.contains("popup_is-opened")) {
         togglePopup(popup)
-        console.log('click')
     }
 };  
 
 function closePopupOnClickEsc (evt, popup) {
     if (evt.key === "Escape" && popup.classList.contains("popup_is-opened")) {
         togglePopup(popup)
-        console.log('esc')
     }
 };
 
@@ -154,7 +152,7 @@ function hasInvalidButton () {
         buttonSubmit.classList.add("button_type_invalid");
         buttonSubmit.setAttribute("disabled", true);
     });
-    console.log('bu')
+
 };
 
 renderCards();
