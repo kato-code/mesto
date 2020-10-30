@@ -112,9 +112,7 @@ function sendFormGallery (evt) {
 
     cardsGallery.prepend(item);
 
-    // nameCardInput.value = "";
-    // linkCardInput.value = "";
-    // formGallery.reset();
+    formGallery.reset();
 
     togglePopup(popupGallery);
     hasInvalidButton(popup);
