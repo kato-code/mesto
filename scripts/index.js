@@ -56,7 +56,7 @@ const initialCards = [
 function renderCards () {
     const items = initialCards.map(element => getItem(element));
 
-    cardsGallery.append(...items);
+    cardsGallery.append(...items)
 };
 
 function togglePopup (popup) {
@@ -87,9 +87,9 @@ function openPopupProfile () {
     if (popupProfile.classList.contains("popup_is-opened") === false) {
         nameProfileInput.value = nameProfile.textContent;
         professionProfileInput.value = professionProfile.textContent;
-    };
+    }
         
-    togglePopup(popupProfile);
+    togglePopup(popupProfile)
 };
 
 function sendFormProfile (evt) {
@@ -97,8 +97,8 @@ function sendFormProfile (evt) {
     nameProfile.textContent = nameProfileInput.value;
     professionProfile.textContent = professionProfileInput.value;
 
-    togglePopup(popupProfile);
-    hasInvalidButton(popup);
+    togglePopup(popupProfile)
+    hasInvalidButton(popup)
 }
 
 function sendFormGallery (evt) {
@@ -108,12 +108,12 @@ function sendFormGallery (evt) {
         link: linkCardInput.value
     });
 
-    cardsGallery.prepend(item);
+    cardsGallery.prepend(item)
 
-    formGallery.reset();
+    formGallery.reset()
 
-    togglePopup(popupGallery);
-    hasInvalidButton(popup);
+    togglePopup(popupGallery)
+    hasInvalidButton(popup)
 };
 
 function getItem (data) {
@@ -142,7 +142,7 @@ function getItem (data) {
         togglePopup(popupCard)
     });
    
-    return card;
+    return card
 };
 
 function hasInvalidButton () {
@@ -155,7 +155,7 @@ function hasInvalidButton () {
 
 };
 
-renderCards();
+renderCards()
 
 openPopupProfileButton.addEventListener("click", openPopupProfile);
 closePopupProfileButton.addEventListener("click", () => togglePopup(popupProfile));
