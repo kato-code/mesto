@@ -67,11 +67,11 @@ function togglePopup (popup) {
     });
 
     popup.addEventListener("click", function (evt) {
-        closePopupOnСlickOverlay(evt, popup)
+        closePopupOnClickOverlay(evt, popup)
     });
 };
 
-function closePopupOnСlickOverlay (evt, popup) {
+function closePopupOnClickOverlay (evt, popup) {
     if (evt.target === evt.currentTarget && popup.classList.contains("popup_is-opened")) {
         togglePopup(popup)
     }
@@ -125,8 +125,8 @@ function getItem (data) {
     cardImage.src = data.link;
     cardImage.alt = "Место: " + data.name;
     
-    const likeСardButton = card.querySelector(".button_type_like-card");
-    likeСardButton.addEventListener("click", function (evt) {
+    const likeCardButton = card.querySelector(".button_type_like-card");
+    likeCardButton.addEventListener("click", function (evt) {
         evt.target.classList.toggle("button_type_like-card-active");
     });
 
