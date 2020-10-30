@@ -1,4 +1,4 @@
-# Проект 4: Место 
+# Проект 6: Место 
 
 https://kato-code.github.io/mesto/.
 
