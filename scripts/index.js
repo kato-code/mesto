@@ -66,20 +66,22 @@ function togglePopup (popup) {
         closePopupOnClickEsc(evt, popup)
     });
 
-    document.addEventListener("click", function (evt) {
+    popup.addEventListener("click", function (evt) {
         closePopupOnСlickOverlay(evt, popup)
     });
 };
 
 function closePopupOnСlickOverlay (evt, popup) {
-    if (evt.target === popup) {
+    if (evt.target === evt.currentTarget && popup.classList.contains("popup_is-opened")) {
         togglePopup(popup)
+        console.log('click')
     }
-};
+};  
 
 function closePopupOnClickEsc (evt, popup) {
-    if (evt.key === "Escape") {
+    if (evt.key === "Escape" && popup.classList.contains("popup_is-opened")) {
         togglePopup(popup)
+        console.log('esc')
     }
 };
 
@@ -98,6 +100,7 @@ function sendFormProfile (evt) {
     professionProfile.textContent = professionProfileInput.value;
 
     togglePopup(popupProfile);
+    hasInvalidButton(popup);
 }
 
 function sendFormGallery (evt) {
@@ -109,11 +112,13 @@ function sendFormGallery (evt) {
 
     cardsGallery.prepend(item);
 
-    nameCardInput.value = "";
-    linkCardInput.value = "";
+    // nameCardInput.value = "";
+    // linkCardInput.value = "";
+    // formGallery.reset();
 
     togglePopup(popupGallery);
-}
+    hasInvalidButton(popup);
+};
 
 function getItem (data) {
     const card = cardTemplate.content.cloneNode(true);
@@ -142,6 +147,16 @@ function getItem (data) {
     });
    
     return card;
+};
+
+function hasInvalidButton () {
+    const buttonSubmitList = Array.from(document.querySelectorAll(".button_type_save-popup"));
+
+    buttonSubmitList.forEach((buttonSubmit) => {
+        buttonSubmit.classList.add("button_type_invalid");
+        buttonSubmit.setAttribute("disabled", true);
+    });
+    console.log('bu')
 };
 
 renderCards();
