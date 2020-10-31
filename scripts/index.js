@@ -17,7 +17,6 @@ const cardsGallery = document.querySelector(".cards")
 const cardTemplate = document.querySelector("#card-template");
 const nameCardInput = document.querySelector("#name-card");
 const linkCardInput = document.querySelector("#link-card");
-const addCardGalleryButton = document.querySelector("#save-gallery");
 
 const popupCard = document.querySelector(".popup_type_card");
 const imagePopupCard = document.querySelector(".popup__image-card");
