@@ -23,8 +23,7 @@ function toggleButtonState(formElement, buttonElement, {inactiveButtonClass}) {
         buttonElement.classList.remove(inactiveButtonClass);
         buttonElement.disabled = false;
     } else {
-        buttonElement.classList.add(inactiveButtonClass);
-        buttonElement.disabled = true;
+        disableButtonSubmit (buttonElement, inactiveButtonClass);
     }
 };
 
@@ -54,6 +53,11 @@ function enableValidation({formSelector, ...rest}) {
         setEventListeners(formElement, {...rest});
     });
 };
+
+function disableButtonSubmit (buttonElement, inactiveButtonClass) {
+    buttonElement.classList.add(inactiveButtonClass);
+    buttonElement.disabled = true;
+};  
 
 enableValidation({
     formSelector: ".popup__form",

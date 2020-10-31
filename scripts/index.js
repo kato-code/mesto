@@ -30,27 +30,31 @@ function renderCards () {
     cardsGallery.append(...items)
 };
 
-function togglePopup (popup) {
-    popup.classList.toggle("popup_is-opened");
+function openPopup (popup) {
+    popup.classList.add("popup_is-opened");
 
-    document.addEventListener("keydown", function (evt) {
-        closePopupOnClickEsc(evt, popup)
+    document.addEventListener("keydown", closePopupOnClickEsc);
+
+    popup.addEventListener("click", (evt) => {
+        if (evt.target.classList.contains("popup_is-opened") ||
+            evt.target.classList.contains("button_type_close-popup")) {
+            closePopup(popup)
+        }
     });
 
-    popup.addEventListener("click", function (evt) {
-        closePopupOnClickOverlay(evt, popup)
-    });
+    disableButtonSubmitList()
 };
 
-function closePopupOnClickOverlay (evt, popup) {
-    if (evt.target === evt.currentTarget && popup.classList.contains("popup_is-opened")) {
-        togglePopup(popup)
-    }
-};  
+function closePopup (popup) {
+    popup.classList.remove("popup_is-opened")
 
-function closePopupOnClickEsc (evt, popup) {
-    if (evt.key === "Escape" && popup.classList.contains("popup_is-opened")) {
-        togglePopup(popup)
+    document.removeEventListener("keydown", closePopupOnClickEsc);
+};
+
+function closePopupOnClickEsc (evt) {
+    if (evt.key === "Escape") {
+        const popupIsOpened = document.querySelector(".popup_is-opened");
+        closePopup(popupIsOpened)
     }
 };
 
@@ -60,7 +64,7 @@ function openPopupProfile () {
         professionProfileInput.value = professionProfile.textContent;
     }
         
-    togglePopup(popupProfile)
+    openPopup(popupProfile)
 };
 
 function sendFormProfile (evt) {
@@ -68,8 +72,7 @@ function sendFormProfile (evt) {
     nameProfile.textContent = nameProfileInput.value;
     professionProfile.textContent = professionProfileInput.value;
 
-    togglePopup(popupProfile)
-    hasInvalidButton(popup)
+    closePopup(popupProfile)
 }
 
 function sendFormGallery (evt) {
@@ -83,8 +86,7 @@ function sendFormGallery (evt) {
 
     formGallery.reset()
 
-    togglePopup(popupGallery)
-    hasInvalidButton(popup)
+    closePopup(popupGallery)
 };
 
 function getItem (data) {
@@ -110,30 +112,24 @@ function getItem (data) {
         imagePopupCard.src = cardImage.src;
         titlePopupCard.innerText = cardTitle.innerText;
  
-        togglePopup(popupCard)
+        openPopup(popupCard)
     });
    
     return card
 };
 
-function hasInvalidButton () {
+function disableButtonSubmitList () {
     const buttonSubmitList = Array.from(document.querySelectorAll(".button_type_save-popup"));
-
-    buttonSubmitList.forEach((buttonSubmit) => {
-        buttonSubmit.classList.add("button_type_invalid");
-        buttonSubmit.setAttribute("disabled", true);
+    
+    buttonSubmitList.forEach((buttonElement) => {
+        disableButtonSubmit(buttonElement, "button_type_invalid");
     });
-
-};
+}
 
 renderCards()
 
 openPopupProfileButton.addEventListener("click", openPopupProfile);
-closePopupProfileButton.addEventListener("click", () => togglePopup(popupProfile));
 formProfile.addEventListener("submit", sendFormProfile);
 
-openPopupGalleryButton.addEventListener("click", () => togglePopup(popupGallery));
-closePopupGalleryButton.addEventListener("click", () => togglePopup(popupGallery));
+openPopupGalleryButton.addEventListener("click", () => openPopup(popupGallery));
 formGallery.addEventListener("submit", sendFormGallery);
-
-closePopupCard.addEventListener("click", () => togglePopup(popupCard));
