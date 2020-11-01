@@ -3,6 +3,7 @@ const popup = document.querySelector(".popup");
 const popupProfile = document.querySelector(".popup_type_profile");
 const openPopupProfileButton = document.querySelector(".button_type_edit-profile");
 const closePopupProfileButton = document.querySelector("#close-profile");
+const submitPopupProfileButton = document.querySelector("#save-profile")
 const formProfile = document.querySelector("#form-profile");
 const nameProfile = document.querySelector(".profile__name");
 const professionProfile = document.querySelector(".profile__profession");
@@ -12,6 +13,7 @@ const professionProfileInput = document.querySelector("#profession");
 const popupGallery = document.querySelector(".popup_type_gallery");
 const openPopupGalleryButton = document.querySelector(".button_type_add-gallery");
 const closePopupGalleryButton = document.querySelector("#close-gallery");
+const submitPopupGalleryButton = document.querySelector("#save-gallery");
 const formGallery = document.querySelector("#form-gallery");
 const cardsGallery = document.querySelector(".cards")
 const cardTemplate = document.querySelector("#card-template");
@@ -41,8 +43,6 @@ function openPopup (popup) {
             closePopup(popup)
         }
     });
-
-    disableButtonSubmitList()
 };
 
 function closePopup (popup) {
@@ -65,6 +65,7 @@ function openPopupProfile () {
     }
         
     openPopup(popupProfile)
+    disableSubmitButtonList(submitPopupProfileButton)
 };
 
 function sendFormProfile (evt) {
@@ -118,10 +119,10 @@ function getItem (data) {
     return card
 };
 
-function disableButtonSubmitList () {
-    const buttonSubmitList = Array.from(document.querySelectorAll(".button_type_save-popup"));
+function disableSubmitButtonList () {
+    const submitButtonList = Array.from(document.querySelectorAll(".button_type_save-popup"));
     
-    buttonSubmitList.forEach((buttonElement) => {
+    submitButtonList.forEach((buttonElement) => {
         disableButtonSubmit(buttonElement, "button_type_invalid");
     });
 }
@@ -131,5 +132,8 @@ renderCards()
 openPopupProfileButton.addEventListener("click", openPopupProfile);
 formProfile.addEventListener("submit", sendFormProfile);
 
-openPopupGalleryButton.addEventListener("click", () => openPopup(popupGallery));
+openPopupGalleryButton.addEventListener("click", function () {
+    openPopup(popupGallery)
+    disableSubmitButtonList(submitPopupGalleryButton)
+});
 formGallery.addEventListener("submit", sendFormGallery);
