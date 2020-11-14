@@ -1,5 +1,6 @@
-import { Card } from "./card.js";
-import { initialCards } from "./card.js";
+import { Card } from "./Card.js";
+import { InitialCards } from "./InitialCards.js";
+import { FormValidator } from "./FormValidator.js";
 
 // const popup = document.querySelector(".popup");
 const cards = document.querySelector(".cards");
@@ -18,7 +19,6 @@ const openPopupGalleryButton = document.querySelector(".button_type_add-gallery"
 const submitPopupGalleryButton = document.querySelector("#save-gallery");
 const formGallery = document.querySelector("#form-gallery");
 
-// const cardTemplate = document.querySelector("#card-template");
 const nameCardInput = document.querySelector("#name-card");
 const linkCardInput = document.querySelector("#link-card");
 
@@ -27,7 +27,18 @@ export const imagePopupCard = document.querySelector(".popup__image-card");
 export const titlePopupCard = document.querySelector(".popup__title_type_card");
 
 
-initialCards.forEach((item) => {
+const configValidation = {
+    formSelector: ".popup__form",
+    inputSelector: ".popup__subtitle",
+    submitButtonSelector: ".button_type_save-popup",
+    inactiveButtonClass: "button_type_invalid",
+    inputErrorClass: "popup__subtitle_state_invalid"
+};
+
+const validateFormProfile = new FormValidator(configValidation, formProfile);
+const validateFormGallery = new FormValidator(configValidation, formGallery);
+
+InitialCards.forEach((item) => {
     const card = new Card(item, "#card-template");
     const cardElement = card.generateCard();
 
@@ -67,9 +78,10 @@ function openPopupProfile () {
         nameProfileInput.value = nameProfile.textContent;
         professionProfileInput.value = professionProfile.textContent;
     }
-        
+    
     openPopup(popupProfile)
-    disableSubmitButtonList(submitPopupProfileButton)
+    validateFormProfile.disableButtonSubmit(submitPopupProfileButton)
+    validateFormProfile.resetInputError()
 };
 
 function sendFormProfile (evt) {
@@ -92,18 +104,12 @@ function sendFormGallery (evt) {
 
     cards.prepend(cardElement)
 
-    formGallery.reset()
-
     closePopup(popupGallery)
 };
 
-function disableSubmitButtonList () {
-    const submitButtonList = Array.from(document.querySelectorAll(".button_type_save-popup"));
-    
-    submitButtonList.forEach((buttonElement) => {
-        disableButtonSubmit(buttonElement, "button_type_invalid");
-    });
-}
+
+validateFormProfile.enableValidation();
+validateFormGallery.enableValidation();
 
 
 openPopupProfileButton.addEventListener("click", openPopupProfile);
@@ -111,7 +117,9 @@ formProfile.addEventListener("submit", sendFormProfile);
 
 openPopupGalleryButton.addEventListener("click", function () {
     openPopup(popupGallery)
-    disableSubmitButtonList(submitPopupGalleryButton)
+    formGallery.reset()
+    validateFormGallery.disableButtonSubmit(submitPopupGalleryButton)
+    validateFormGallery.resetInputError()
 });
 formGallery.addEventListener("submit", sendFormGallery);
 
