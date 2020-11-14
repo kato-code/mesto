@@ -1,4 +1,4 @@
-import { Card } from "./Card.js";
+import { Card } from "./Сard.js";
 import { InitialCards } from "./InitialCards.js";
 import { FormValidator } from "./FormValidator.js";
 
