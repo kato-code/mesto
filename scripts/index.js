@@ -1,5 +1,5 @@
-import { Card } from "./Сard.js";
 import { InitialCards } from "./InitialCards.js";
+import { Card } from "./Сard.js";
 import { FormValidator } from "./FormValidator.js";
 
 // const popup = document.querySelector(".popup");
