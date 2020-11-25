@@ -1,9 +1,8 @@
-import { imagePopupCard, titlePopupCard, openPopup, popupCard } from "./index.js";
-
-export class Card {
-    constructor(data, cardSelector) {
+export default class Card {
+    constructor(data, cardSelector, handleCardClick) {
         this._name = data.name;
         this._link = data.link;
+        this._handleCardClick = handleCardClick;
         this._cardSelector = cardSelector;
     }
 
@@ -36,13 +35,6 @@ export class Card {
         this._element.remove();
     }
 
-    _zoomCard() {
-        imagePopupCard.src = this._link;
-        titlePopupCard.innerText = this._name;
-
-        openPopup(popupCard)
-    }
-
     _setEventListeners() {
         this._element
         .querySelector(".button_type_like-card")
@@ -59,7 +51,7 @@ export class Card {
         this._element
         .querySelector(".card__image")
         .addEventListener("click", () => {
-            this._zoomCard()
+            this._handleCardClick(this._name, this._link)
         });
         
     }

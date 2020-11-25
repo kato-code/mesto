@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
 </head>
 <body class="body">
@@ -16,7 +15,7 @@
     <main class="content">
 
         <section class="profile">
-            <img class="profile__avatar" src="./images/avatar.png" alt="Аватарка">
+            <img class="profile__avatar" src="<%=require("./images/avatar.png")%>" alt="Аватарка">
             <div class="profile__content">
                 <div class="profile__info">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -52,9 +51,9 @@
         <form name="form-gallery" id="form-gallery" class="popup__form popup__form_type_gallery">
             <button type="button" id="close-gallery" class="button button_type_close-popup button_type_close-popup-gallery"></button>
             <h2 class="popup__title popup__title_type_gallery">Новое место</h2>
-            <input type="text" name="name-card" id="name-card" placeholder="Название" class="popup__subtitle popup__subtitle_type_gallery" minlength="2" maxlength="30" required>
+            <input type="text" name="name_card" id="name-card" placeholder="Название" class="popup__subtitle popup__subtitle_type_gallery" minlength="2" maxlength="30" required>
             <span id="name-card-error" class="error"></span>
-            <input type="url" name="link-card" id="link-card" placeholder="Ссылка на картинку" class="popup__subtitle popup__subtitle_type_gallery" required>
+            <input type="url" name="link_card" id="link-card" placeholder="Ссылка на картинку" class="popup__subtitle popup__subtitle_type_gallery" required>
             <span id="link-card-error" class="error"></span>
             <button type="submit" id="save-gallery" value="Создать" class="button button_type_save-popup button_type_save-popup-gallery">Создать</button>
         </form>
@@ -79,8 +78,6 @@
         </li>
     </template>
 
-    <script src="./scripts/index.js" type="module"></script>
-    
 </div>
 </body>
 </html>
