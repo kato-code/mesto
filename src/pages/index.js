@@ -54,10 +54,10 @@ const cardList = new Section({
 
 const popupProfileWithForm = new PopupWithForm(
     popupProfile,
-    submitForm => {
+    dataForm => {
         userInfo.setUserInfo({
-            name: submitForm.name,
-            profession: submitForm.profession
+            name: dataForm.name,
+            profession: dataForm.profession
         })
 
         popupProfileWithForm.closePopup()
@@ -66,10 +66,10 @@ const popupProfileWithForm = new PopupWithForm(
 
 const popupGalleryWithForm = new PopupWithForm(
     popupGallery, 
-    submitForm => {
+    dataForm => {
         const dataCard = {
-            name: submitForm.name_card, 
-            link: submitForm.link_card
+            name: dataForm.name_card, 
+            link: dataForm.link_card
         };
 
         const card = createCard(dataCard)
@@ -93,8 +93,9 @@ validateFormGallery.enableValidation();
 
 
 openPopupProfileButton.addEventListener("click", function () {
-    nameProfileInput.value = nameProfile.textContent;
-    professionProfileInput.value = professionProfile.textContent;
+    const user = userInfo.getUserInfo()
+    nameProfileInput.value = user.name;
+    professionProfileInput.value = user.profession;
     validateFormProfile.disableButtonSubmit(submitPopupProfileButton)
     validateFormProfile.resetInputError()
     popupProfileWithForm.openPopup()
@@ -105,99 +106,3 @@ openPopupGalleryButton.addEventListener("click", function () {
     validateFormGallery.resetInputError()
     popupGalleryWithForm.openPopup()
 });
-
-
-
-// const cardList = new Section({
-//     items: InitialCards,
-//     renderer: (item) => {
-//         const card = new Card(item, "#card-template");
-//         const cardElement = card.generateCard();
-
-//         cardList.addItem(cardElement);
-//     }
-// }, cards);
-// cardList.renderItems();
-
-// InitialCards.forEach((item) => {
-//     const card = new Card(item, "#card-template");
-//     const cardElement = card.generateCard();
-
-//     cards.append(cardElement);
-// })
-
-// export function openPopup (popup) {
-//     popup.classList.add("popup_is-opened")
-
-//     document.addEventListener("keydown", closePopupOnClickEsc);
-// };
-
-// function closePopup (popup) {
-//     popup.classList.remove("popup_is-opened")
-
-//     document.removeEventListener("keydown", closePopupOnClickEsc);
-// };
-
-// function closePopupOnClickEsc (evt) {
-//     if (evt.key === "Escape") {
-//         const popupIsOpened = document.querySelector(".popup_is-opened");
-//         closePopup(popupIsOpened)
-//     }
-// };
-
-// function closePopupOnClickOverlayAndButton (evt) {
-//     if (evt.target.classList.contains("popup_is-opened") ||
-//         evt.target.classList.contains("button_type_close-popup")) {
-
-//         const popupIsOpened = document.querySelector(".popup_is-opened");
-//         closePopup(popupIsOpened)
-//     }
-// };
-
-// function openPopupProfile () {
-//     // if (popupProfile.classList.contains("popup_is-opened") === false) {
-//     //     nameProfileInput.value = nameProfile.textContent;
-//     //     professionProfileInput.value = professionProfile.textContent;
-//     // }
-    
-//     openPopup(popupProfile)
-//     validateFormProfile.disableButtonSubmit(submitPopupProfileButton)
-//     validateFormProfile.resetInputError()
-// };
-
-// function sendFormProfile (evt) {
-//     evt.preventDefault(); 
-//     nameProfile.textContent = nameProfileInput.value;
-//     professionProfile.textContent = professionProfileInput.value;
-
-//     closePopup(popupProfile)
-// }
-
-// function sendFormGallery (evt) {
-//     evt.preventDefault(); 
-//     const item = {
-//         name: nameCardInput.value,
-//         link: linkCardInput.value
-//     };
-
-//     const card = new Card(item, "#card-template");
-//     const cardElement = card.generateCard();
-
-//     cards.prepend(cardElement)
-
-//     closePopup(popupGallery)
-// };
-
-
-// formGallery.addEventListener("submit", function () {
-//     // sendFormGallery
-
-//     // const card = new Card(item, "#card-template");
-//     // const cardElement = card.generateCard();
-
-//     // cards.prepend(cardElement)
-// });
-
-// popupProfile.addEventListener("click", closePopupOnClickOverlayAndButton);
-// popupGallery.addEventListener("click", closePopupOnClickOverlayAndButton);
-// popupCard.addEventListener("click", closePopupOnClickOverlayAndButton);
