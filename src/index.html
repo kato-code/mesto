@@ -75,6 +75,16 @@
         </form>
     </section>
 
+    <section class="popup popup_type_avatar">
+        <form name="form-avatar" id="form-avatar" class="popup__form popup__form_type_avatar">
+            <button type="button" class="button button_type_close-popup button_type_close-popup-avatar"></button>
+            <h2 class="popup__title popup__title_type_avatar">Обновить аватар</h2>
+            <input type="url" name="avatar" id="avatar" placeholder="Ссылка на аватар" class="popup__subtitle popup__subtitle_type_avatar">
+            <span id="avatar-error" class="error"></span>
+            <button type="submit" id="save-avatar" value="Сохранить" class="button button_type_save-popup button_type_save-popup-avatar">Сохранить</button>
+        </form>
+    </section>
+
     <template id="card-template">
         <li class="card__item">
             <button type="button" class="button button_type_trash-card"></button>
