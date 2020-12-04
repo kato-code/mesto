@@ -37,6 +37,7 @@
 @import url("../blocks/cards/__counter-likes/card__counter-likes.css");
 
 @import url("../blocks/profile/profile.css");
+@import url("../blocks/profile/__avatar-container/profile__avatar-container.css");
 @import url("../blocks/profile/__avatar/profile__avatar.css");
 @import url("../blocks/profile/__content/profile__content.css");
 @import url("../blocks/profile/__info/profile__info.css");
