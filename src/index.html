@@ -53,9 +53,9 @@
         <form name="form-gallery" id="form-gallery" class="popup__form popup__form_type_gallery">
             <button type="button" id="close-gallery" class="button button_type_close-popup button_type_close-popup-gallery"></button>
             <h2 class="popup__title popup__title_type_gallery">Новое место</h2>
-            <input type="text" name="name_card" id="name-card" placeholder="Название" class="popup__subtitle popup__subtitle_type_gallery" minlength="2" maxlength="30" required>
+            <input type="text" name="place" id="place" placeholder="Название" class="popup__subtitle popup__subtitle_type_gallery" minlength="2" maxlength="30" required>
             <span id="name-card-error" class="error"></span>
-            <input type="url" name="link_card" id="link-card" placeholder="Ссылка на картинку" class="popup__subtitle popup__subtitle_type_gallery" required>
+            <input type="url" name="link" id="link" placeholder="Ссылка на картинку" class="popup__subtitle popup__subtitle_type_gallery" required>
             <span id="link-card-error" class="error"></span>
             <button type="submit" id="save-gallery" value="Создать" class="button button_type_save-popup button_type_save-popup-gallery">Создать</button>
         </form>
@@ -69,11 +69,11 @@
         </div>
     </section>
 
-    <section class="popup popup_type_check">
-        <form name="form-check" id="form-check" class="popup__form popup__form_type_check">
-            <button type="button" class="button button_type_close-popup button_type_close-popup-check"></button>
-            <h2 class="popup__title popup__title_type_check">Вы уверены?</h2>
-            <button type="submit" id="save-check" value="Да" class="button button_type_save-popup button_type_save-popup-check">Да</button>
+    <section class="popup popup_type_confirm">
+        <form name="form-confirm" id="form-confirm" class="popup__form popup__form_type_confirm">
+            <button type="button" class="button button_type_close-popup button_type_close-popup-confirm"></button>
+            <h2 class="popup__title popup__title_type_confirm">Вы уверены?</h2>
+            <button type="submit" id="save-confirm" value="Да" class="button button_type_save-popup button_type_save-popup-confirm">Да</button>
         </form>
     </section>
 
@@ -81,7 +81,7 @@
         <form name="form-avatar" id="form-avatar" class="popup__form popup__form_type_avatar">
             <button type="button" class="button button_type_close-popup button_type_close-popup-avatar"></button>
             <h2 class="popup__title popup__title_type_avatar">Обновить аватар</h2>
-            <input type="url" name="avatar" id="avatar" placeholder="Ссылка на аватар" class="popup__subtitle popup__subtitle_type_avatar">
+            <input type="url" name="link_avatar" id="link-avatar" placeholder="Ссылка на аватар" class="popup__subtitle popup__subtitle_type_avatar">
             <span id="avatar-error" class="error"></span>
             <button type="submit" id="save-avatar" value="Сохранить" class="button button_type_save-popup button_type_save-popup-avatar">Сохранить</button>
         </form>
