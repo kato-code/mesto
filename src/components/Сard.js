@@ -27,7 +27,7 @@ export default class Card {
         this._element.querySelector(".button_type_like-card").classList.toggle("button_type_like-card-active");
     }
 
-    statusLike() {
+    isLiked() {
         if (this._element.querySelector(".button_type_like-card").classList.contains("button_type_like-card-active")) {
             return true
         } else {

@@ -98,7 +98,7 @@ function createCard (item) {
         },
         handleLikeClick: () => {
             const id = card.getId();
-                if (card.statusLike()) {
+                if (card.isLiked()) {
                     api.deleteLike(id)
                     .then((res) => {
                         card.countLikes(res.likes.length)
