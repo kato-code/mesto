@@ -212,6 +212,6 @@ openPopupGalleryButton.addEventListener("click", function () {
 
 openPopupAvatarButton.addEventListener("click", function () {
     validateFormAvatar.disableButtonSubmit(submitPopupAvatarButton)
-    // validateFormAvatar.resetInputError()
+    validateFormAvatar.resetInputError()
     popupAvatarWithForm.openPopup()
 });
