@@ -1,20 +1,23 @@
-// import { nameProfileInput, professionProfileInput} from "./utils.js";
-
 export default class UserInfo {
-    constructor(nameProfile, professionProfile) {
-        this._nameProfile = nameProfile;
-        this._professionProfile = professionProfile;
+    constructor({nameProfile, professionProfile, avatarProfile}) {
+        this._nameProfile = document.querySelector(nameProfile);
+        this._professionProfile = document.querySelector(professionProfile);
+        this._avatarProfile = document.querySelector(avatarProfile);
     }
 
     getUserInfo() {
         return {
             name: this._nameProfile.textContent,
-            profession: this._professionProfile.textContent
+            profession: this._professionProfile.textContent,
         }
     }
 
-    setUserInfo({name, profession}) {
-        this._nameProfile.textContent = name;
-        this._professionProfile.textContent = profession; 
+    setUserInfo(data) {
+        this._nameProfile.textContent = data.name;
+        this._professionProfile.textContent = data.profession; 
+    }
+
+    setUserAvatar(data) {
+        this._avatarProfile.src = data.avatar;
     }
 }
