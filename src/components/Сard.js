@@ -24,7 +24,10 @@ export default class Card {
     }
 
     likeCard() {
-        this._element.querySelector(".button_type_like-card").classList.toggle("button_type_like-card-active");
+        this._element
+        .querySelector(".button_type_like-card")
+        .classList
+        .toggle("button_type_like-card-active");
     }
 
     isLiked() {
@@ -53,9 +56,10 @@ export default class Card {
         this._element = this._getTemplate();
         this._setEventListeners();
 
+        this._cardImage = this._element.querySelector(".card__image");
+        this._cardImage.src = this._link;
+        this._cardImage.alt = this._name;
         this._element.querySelector(".card__title").textContent = this._name;
-        this._element.querySelector(".card__image").src = this._link;
-        this._element.querySelector(".card__image").alt = this._name;
         this._element.querySelector(".card__counter-likes").textContent = this._likes.length;
 
         if (this._ownerId !== this._userId) {
@@ -64,7 +68,7 @@ export default class Card {
 
         this._likes.forEach(elem => {
             if (elem._id == this._userId) {
-                this._element.querySelector(".button_type_like-card").classList.toggle("button_type_like-card-active");
+                this.likeCard()
             }
         });
 
