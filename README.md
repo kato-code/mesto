@@ -1,6 +1,6 @@
 # Проект 6: Место 
 
-https://kato-code.github.io/mesto
+https://kato-code.github.io/mesto/index.html
 
 Одностраничный интерактивный сайт, написанный во время прохождения курса "Базовый JavaScript и работа с браузером" по программе Яндекс.Практикума. 
  
