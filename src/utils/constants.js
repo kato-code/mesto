@@ -42,3 +42,9 @@ export const configValidation = {
     inactiveButtonClass: "button_type_invalid",
     inputErrorClass: "popup__subtitle_state_invalid"
 };
+
+export const configUser = {
+    nameProfile: ".profile__name",
+    professionProfile: ".profile__profession",
+    avatarProfile: ".profile__avatar"
+};

@@ -17,7 +17,8 @@ import {
     popupAvatar, 
     openPopupAvatarButton, 
     submitPopupAvatarButton,
-    formAvatar
+    formAvatar,
+    configUser
 } from "../utils/constants.js";
 
 import Card from "../components/Сard.js";
@@ -38,11 +39,7 @@ const popupWithImage = new PopupWithImage(popupCard);
 
 const popupWithConfirm = new PopupWithConfirm(popupConfirm);
 
-const userInfo = new UserInfo ({
-    nameProfile: ".profile__name",
-    professionProfile: ".profile__profession",
-    avatarProfile: ".profile__avatar"
-});
+const userInfo = new UserInfo(configUser);
 
 const api = new Api ({
     url: "https://mesto.nomoreparties.co/v1/cohort-18",
